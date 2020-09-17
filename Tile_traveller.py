@@ -4,7 +4,7 @@ print(welcome)
 
 def move_player_x(x ,direction ):
     """
-    input: 3 parameters x cordinates and y cordinates and a direction.
+    input: 2 parameters x cordinates and a direction.
     Changes the cordinates based on the direction entered.
     """
     if direction == 'N':
@@ -13,10 +13,16 @@ def move_player_x(x ,direction ):
         x -= 1
     return x
 
-def move_player_x(x, direction):
+def move_player_y(y, direction):
     """
-    
+    input: 2 parameters x cordinates and a direction.
+    Changes the y cordinates based on the direction entered.
     """
+     if direction == 'E':
+        y += 1
+    elif direction == 'A':
+        y -= 1
+    return y
     
 
 
@@ -51,7 +57,7 @@ y_cordinates = 1
 
 
 while victory = False:
-    pass
+    print()
 
 # 1.1 (N)orth
 # 1.2 (N)orth or (E)ast or (S)outh
