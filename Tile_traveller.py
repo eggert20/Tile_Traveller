@@ -1,6 +1,6 @@
 # Tile Traveller program
-welcome = "Hello world"
-print(welcome)
+choose_direction = input("Enter a direction: n/N for north (up), e/E for east (right), s/S for south (down), w/W for west (left)")
+print(choose_direction)
 
 def move_player_x(x ,direction ):
     """
@@ -26,25 +26,27 @@ def move_player_y(y, direction):
     
 
 def possible_direction(x,y):
-    if x == 1 and y == 1:
+    if y == 1: # (1,1), (2,1) and (3,1)
         direction_str = "N"
         print("You can travel: (N)orth.")
-    elif x == 1 and y == 2:
+    if x == 1 and y == 2: # (1,2)
         direction_str = "NES"
         print("You can travel: (N)orth or (E)ast or (S)outh.")
-    elif x == 1 and y == 3:
+    if x == 1 and y == 3: # (1,3)
         direction_str = "ES"
         print("You can travel: (E)ast or (S)outh.")
-    elif x == y:
+    if x == y: # (2,2) and (3,3)
         direction_str = "SW"
         print("You can travel: (S)outh or (W)est.")
-    elif x == 2 and y == 3:
+    if x == 2 and y == 3: # (2,3)
         direction_str = "EW"
         print("You can travel: (E)ast or (W)est.")
-    elif x == 3 and y == 2:
+    if x == 3 and y == 2: # (3,2)
         direction_str = "NS"
         print("You can travel: (N)orth or (S)outh.")
     return direction_str
+
+def check_victory():
 
 victory = False
 valid_direction = False
