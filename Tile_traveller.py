@@ -1,15 +1,13 @@
 # Tile Traveller program
-choose_direction = input("Enter a direction: n/N for north (up), e/E for east (right), s/S for south (down), w/W for west (left)")
-print(choose_direction)
 
 def move_player_x(x ,direction ):
     """
     input: 2 parameters x cordinates and a direction.
     Changes the cordinates based on the direction entered.
     """
-    if direction == 'N':
+    if direction == 'E':
         x += 1
-    elif direction == 'S':
+    elif direction == 'W':
         x -= 1
     return x
 
@@ -18,9 +16,9 @@ def move_player_y(y, direction):
     input: 2 parameters x cordinates and a direction.
     Changes the y cordinates based on the direction entered.
     """
-    if direction == 'E':
+    if direction == 'N':
         y += 1
-    elif direction == 'A':
+    elif direction == 'S':
         y -= 1
     return y
     
@@ -36,7 +34,7 @@ def possible_direction(x,y):
         direction_str = "ES"
         print("You can travel: (E)ast or (S)outh.")
     elif x == 2 and y == 1: # (2,1)
-        direction_str = "N"
+        direction_str = "NE"
         print("You can travel: (N)orth.")
     elif x == 2 and y == 2: # (2,2)
         direction_str = "SW"
@@ -70,13 +68,16 @@ while victory == False:
         for letter in jonni:
             if letter == new_move:
                 valid_direction = True
-            else:
-                print('Not a valid direction!')
+                break
+        else:
+            print('Not a valid direction!')
+            possible_direction(x_cordinates, y_cordinates)
+                
 
     x_cordinates = move_player_x(x_cordinates, new_move)
     y_cordinates = move_player_y(y_cordinates, new_move)
 
-    if x_cordinates == 3 and y_cordinates == 3:
+    if x_cordinates == 3 and y_cordinates == 1:
         print('Victory!')
         break
     valid_direction = False
