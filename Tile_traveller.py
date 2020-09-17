@@ -18,32 +18,33 @@ def move_player_y(y, direction):
     input: 2 parameters x cordinates and a direction.
     Changes the y cordinates based on the direction entered.
     """
-     if direction == 'E':
+    if direction == 'E':
         y += 1
     elif direction == 'A':
         y -= 1
     return y
     
 
-
-def locate_player():
-
 def possible_direction(x,y):
-    if y == 1:
+    if x == 1 and y == 1:
         direction_str = "N"
-    if x == 1 and y == 2:
+        print("You can travel: (N)orth.")
+    elif x == 1 and y == 2:
         direction_str = "NES"
-    if x == 1 and y == 3:
-        direction_str = "E or S"
-    if x == y:
-        direction_str = "S or W"
-    if x == 2 and y == 3:
-        direction_str = "E or W"
-    if x == 3 and y == 2:
-        direction_str = "N or S"
+        print("You can travel: (N)orth or (E)ast or (S)outh.")
+    elif x == 1 and y == 3:
+        direction_str = "ES"
+        print("You can travel: (E)ast or (S)outh.")
+    elif x == y:
+        direction_str = "SW"
+        print("You can travel: (S)outh or (W)est.")
+    elif x == 2 and y == 3:
+        direction_str = "EW"
+        print("You can travel: (E)ast or (W)est.")
+    elif x == 3 and y == 2:
+        direction_str = "NS"
+        print("You can travel: (N)orth or (S)outh.")
     return direction_str
-
-def check_victory():
 
 victory = False
 valid_direction = False
@@ -51,25 +52,25 @@ x_cordinates = 1
 y_cordinates = 1
 
 
-while victory = False:
-    print('You can travel: 'end=)
-    possible_direction = possible_direction()
+while victory == False:
+    jonni = possible_direction(x_cordinates,y_cordinates)
     
-    while valid_direction == True:
+    while valid_direction == False:
         new_move = input("Direction: ")
         new_move = new_move.upper()
-        for letter in possible_direction:
+        for letter in jonni:
             if letter == new_move:
                 valid_direction = True
             else:
                 print('Not a valid direction!')
 
-    x = move_player_x(x, new_move)
-    y = move_player_y(y, new_move)
+    x_cordinates = move_player_x(x_cordinates, new_move)
+    y_cordinates = move_player_y(y_cordinates, new_move)
 
-    if x == 3 and y == 3:
+    if x_cordinates == 3 and y_cordinates == 3:
         print('Victory!')
         break
+    valid_direction = False
 
         
 
