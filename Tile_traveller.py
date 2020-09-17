@@ -25,18 +25,24 @@ def locate_player():
 def possible_direction(x,y):
     if y == 1:
         direction_str = "N"
+        print("You can travel: (N)orth.")
     if x == 1 and y == 2:
-        direction_str = "N or E or S"
+        direction_str = "NES"
+        print("You can travel: (N)orth or (E)ast or (S)outh.")
     if x == 1 and y == 3:
-        direction_str = "E or S"
+        direction_str = "ES"
+        print("You can travel: (E)ast or (S)outh.")
     if x == y:
-        direction_str = "S or W"
+        direction_str = "SW"
+        print("You can travel: (S)outh or (W)est.")
     if x == 2 and y == 3:
-        direction_str = "E or W"
+        direction_str = "EW"
+        print("You can travel: (E)ast or (W)est.")
     if x == 3 and y == 2:
-        direction_str = "N or S"
+        direction_str = "NS"
+        print("You can travel: (N)orth or (S)outh.")
     return direction_str
-
+    
 def check_victory():
 
 victory = False
