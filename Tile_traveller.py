@@ -26,7 +26,7 @@ def move_player_y(y, direction):
     
 
 def possible_direction(x,y):
-    if y == 1: # (1,1), (2,1) and (3,1)
+    if x == 1 and y == 1: # (1,1)
         direction_str = "N"
         print("You can travel: (N)orth.")
     elif x == 1 and y == 2: # (1,2)
@@ -35,15 +35,24 @@ def possible_direction(x,y):
     elif x == 1 and y == 3: # (1,3)
         direction_str = "ES"
         print("You can travel: (E)ast or (S)outh.")
-    elif x == y: # (2,2) and (3,3)
+    elif x == 2 and y == 1: # (2,1)
+        direction_str = "N"
+        print("You can travel: (N)orth.")
+    elif x == 2 and y == 2: # (2,2)
         direction_str = "SW"
         print("You can travel: (S)outh or (W)est.")
     elif x == 2 and y == 3: # (2,3)
         direction_str = "EW"
         print("You can travel: (E)ast or (W)est.")
+    elif x == 3 and y == 1: # (3,1)
+        direction_str = "N"
+        print("You can travel: (N)orth.")
     elif x == 3 and y == 2: # (3,2)
         direction_str = "NS"
         print("You can travel: (N)orth or (S)outh.")
+    elif x == 3 and y == 3: # (3,3)
+        direction_str = "SW"
+        print("You can travel: (S)outh or (W)est.")
     return direction_str
 
 victory = False
