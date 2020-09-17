@@ -2,7 +2,23 @@
 welcome = "Hello world"
 print(welcome)
 
-def change_location():
+def move_player_x(x ,direction ):
+    """
+    input: 3 parameters x cordinates and y cordinates and a direction.
+    Changes the cordinates based on the direction entered.
+    """
+    if direction == 'N':
+        x += 1
+    elif direction == 'S':
+        x -= 1
+    return x
+
+def move_player_x(x, direction):
+    """
+    
+    """
+    
+
 
 def locate_player():
 
@@ -11,6 +27,9 @@ def possible_direction():
 def check_victory():
 
 victory = False
+x_cordinates = 1
+y_cordinates = 1
+
 
 while victory = False:
     pass
