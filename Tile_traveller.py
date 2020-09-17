@@ -6,7 +6,26 @@ def change_location():
 
 def locate_player():
 
-def possible_direction():
+def possible_direction(x,y):
+    if x == 1 and y == 1:
+        direction_str = "N"
+    if x == 1 and y == 2:
+        pass
+    if x == 1 and y == 3:
+        pass
+    if x == 2 and y == 1:
+        pass
+    if x == 2 and y == 2:
+        pass
+    if x == 2 and y == 3:
+        pass
+    if x == 3 and y == 1:
+        pass
+    if x == 3 and y == 2:
+        pass
+    if x == 3 and y == 3:
+        pass
+    return direction_str
 
 def check_victory():
 
