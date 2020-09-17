@@ -1,6 +1,6 @@
 # Tile Traveller program
-welcome = "Hello world"
-print(welcome)
+choose_direction = input("Enter a direction: n/N for north (up), e/E for east (right), s/S for south (down), w/W for west (left)")
+print(choose_direction)
 
 def move_player_x(x ,direction ):
     """
