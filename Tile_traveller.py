@@ -37,7 +37,7 @@ def possible_direction(x,y):
         direction_str = "ES"
         print("You can travel: (E)ast or (S)outh.")
     elif x == 2 and y == 1: # (2,1)
-        direction_str = "NE"
+        direction_str = "N"
         print("You can travel: (N)orth.")
     elif x == 2 and y == 2: # (2,2)
         direction_str = "SW"
@@ -59,7 +59,7 @@ def possible_direction(x,y):
 def get_move(direction, x, y, move_counter):
     valid_direction = False
     while valid_direction == False:
-        new_move = random.choice(['n', 's', 'w', 'e'])
+        new_move = random.choice(['n', 'e', 's', 'w'])
         print("Direction: {}".format(new_move))
         new_move = new_move.upper()
 
