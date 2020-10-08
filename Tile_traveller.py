@@ -1,3 +1,5 @@
+import random
+
 # Tile Traveller program
 # https://github.com/eggert20/Tile_Traveller.git
 
@@ -54,19 +56,23 @@ def possible_direction(x,y):
         print("You can travel: (S)outh or (W)est.")
     return direction_str
 
-def get_move(direction, x, y):
+def get_move(direction, x, y, move_counter):
     valid_direction = False
     while valid_direction == False:
-        new_move = input("Direction: ")
+        new_move = random.choice(['n', 's', 'w', 'e'])
+        print("Direction: {}".format(new_move))
         new_move = new_move.upper()
+
         for letter in direction:
             if letter == new_move:
                 valid_direction = True
+                move_counter += 1
                 break
         else:
             print('Not a valid direction!')
             possible_direction(x, y)
-    return new_move
+            move_counter += 1
+    return new_move, move_counter
                 
 
 def is_lever(x,y):
@@ -90,10 +96,11 @@ def is_lever(x,y):
         return False
 
 def lever_functionality(coin_counter):
-    the_input = input('Pull a lever (y/n): ')
-    the_input = the_input.upper()
+    the_input = random.choice(['y', 'n'])
+    print('Pull a lever (y/n): {}'.format(the_input))
+   
 
-    if the_input == 'Y':
+    if the_input == 'y':
         coin_counter += 1
         print('You received 1 coin, your total is now {}.'.format(coin_counter))
     return coin_counter
@@ -103,10 +110,11 @@ def play():
     x_cordinates = 1
     y_cordinates = 1
     coin_counter = 0
+    move_counter = 0
     while victory == False:
         possible_directions = possible_direction(x_cordinates,y_cordinates)
         
-        new_move = get_move(possible_directions, x_cordinates, y_cordinates)
+        new_move, move_counter = get_move(possible_directions, x_cordinates, y_cordinates, move_counter)
                 
         x_cordinates = move_player_x(x_cordinates, new_move)
         y_cordinates = move_player_y(y_cordinates, new_move)
@@ -116,10 +124,12 @@ def play():
             coin_counter = lever_functionality(coin_counter)
 
         if x_cordinates == 3 and y_cordinates == 1:
-            print('Victory! Total coins {}.'.format(coin_counter))
+            print('Victory! Total coins {}. Moves {}.'.format(coin_counter, move_counter))
             return None
 
 def main():
+    seed = int(input('Input seed: '))
+    random.seed(seed)
     yes_or_no = 'Y'
     while yes_or_no == 'Y':
         play()
