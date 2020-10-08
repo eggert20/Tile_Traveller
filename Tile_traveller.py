@@ -98,7 +98,7 @@ def lever_functionality(coin_counter):
         print('You received 1 coin, your total is now {}.'.format(coin_counter))
     return coin_counter
 
-def main():
+def play():
     victory = False
     valid_direction = False
     x_cordinates = 1
@@ -118,8 +118,15 @@ def main():
 
         if x_cordinates == 3 and y_cordinates == 1:
             print('Victory! Total coins {}.'.format(coin_counter))
+            return None
 
-            break
+def main():
+    yes_or_no = 'Y'
+    while yes_or_no == 'Y':
+        play()
+        yes_or_no = input('Play again (y/n): ')
+        yes_or_no = yes_or_no.upper()
+
 
 main()
 
