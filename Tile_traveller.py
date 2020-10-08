@@ -1,8 +1,6 @@
 # Tile Traveller program
 # https://github.com/eggert20/Tile_Traveller.git
 
-HAS_MADE_MISTAKE = False
-
 def move_player_x(x ,direction ):
     """
     input: 2 parameters x cordinates and a direction.
@@ -67,7 +65,6 @@ def get_move(direction, x, y):
                 break
         else:
             print('Not a valid direction!')
-            HAS_MADE_MISTAKE = True
             possible_direction(x, y)
     return new_move
                 
@@ -115,12 +112,12 @@ def main():
         x_cordinates = move_player_x(x_cordinates, new_move)
         y_cordinates = move_player_y(y_cordinates, new_move)
 
-        if HAS_MADE_MISTAKE != True:
-            if is_lever(x_cordinates, y_cordinates):
-                coin_counter = lever_functionality(coin_counter)
+        
+        if is_lever(x_cordinates, y_cordinates):
+            coin_counter = lever_functionality(coin_counter)
 
         if x_cordinates == 3 and y_cordinates == 1:
-            print('Victory! Total coins {}'.format(coin_counter))
+            print('Victory! Total coins {}.'.format(coin_counter))
 
             break
 
