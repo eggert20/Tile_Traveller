@@ -1,5 +1,3 @@
-import random
-
 # Tile Traveller program
 # https://github.com/eggert20/Tile_Traveller.git
 
@@ -59,7 +57,8 @@ def possible_direction(x,y):
 def get_move(direction, x, y):
     valid_direction = False
     while valid_direction == False:
-        new_move = random.choice(['N', 'E', 'S', 'W'])
+        new_move = input("Direction: ")
+        new_move = new_move.upper()
         for letter in direction:
             if letter == new_move:
                 valid_direction = True
@@ -91,7 +90,8 @@ def is_lever(x,y):
         return False
 
 def lever_functionality(coin_counter):
-    the_input = random.choice(['Y', 'N'])
+    the_input = input('Pull a lever (y/n): ')
+    the_input = the_input.upper()
 
     if the_input == 'Y':
         coin_counter += 1
@@ -100,7 +100,6 @@ def lever_functionality(coin_counter):
 
 def play():
     victory = False
-    valid_direction = False
     x_cordinates = 1
     y_cordinates = 1
     coin_counter = 0
@@ -121,7 +120,6 @@ def play():
             return None
 
 def main():
-    seed = input("Input seed: ")
     yes_or_no = 'Y'
     while yes_or_no == 'Y':
         play()
