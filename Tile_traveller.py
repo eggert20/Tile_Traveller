@@ -84,9 +84,6 @@ while victory == False:
         break
     valid_direction = False
 
-        
-
-
 
 # 1.1 (N)orth
 # 1.2 (N)orth or (E)ast or (S)outh
