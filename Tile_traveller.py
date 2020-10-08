@@ -1,6 +1,7 @@
 # Tile Traveller program
 # https://github.com/eggert20/Tile_Traveller.git
 
+HAS_MADE_MISTAKE = False
 
 def move_player_x(x ,direction ):
     """
@@ -55,7 +56,7 @@ def possible_direction(x,y):
         print("You can travel: (S)outh or (W)est.")
     return direction_str
 
-def get_move(direction):
+def get_move(direction, x, y):
     valid_direction = False
     while valid_direction == False:
         new_move = input("Direction: ")
@@ -66,8 +67,8 @@ def get_move(direction):
                 break
         else:
             print('Not a valid direction!')
-            has_made_mistake = True
-            possible_direction(x_cordinates, y_cordinates)
+            HAS_MADE_MISTAKE = True
+            possible_direction(x, y)
     return new_move
                 
 
@@ -91,28 +92,37 @@ def is_lever(x,y):
     elif x == 3 and y == 3: # (3,3)
         return False
 
+def lever_functionality(coin_counter):
+    the_input = input('Pull a lever (y/n): ')
+    the_input = the_input.upper()
 
-victory = False
-valid_direction = False
-x_cordinates = 1
-y_cordinates = 1
-
-has_made_mistake = False
+    if the_input == 'Y':
+        coin_counter += 1
+        print('You received 1 coin, your total is now {}.'.format(coin_counter))
+    return coin_counter
 
 def main():
+    victory = False
+    valid_direction = False
+    x_cordinates = 1
+    y_cordinates = 1
+    coin_counter = 0
     while victory == False:
-        jonni = possible_direction(x_cordinates,y_cordinates)
+        possible_directions = possible_direction(x_cordinates,y_cordinates)
         
-        new_move = get_move(jonni)
-                    
-
+        new_move = get_move(possible_directions, x_cordinates, y_cordinates)
+                
         x_cordinates = move_player_x(x_cordinates, new_move)
         y_cordinates = move_player_y(y_cordinates, new_move)
 
+        if HAS_MADE_MISTAKE != True:
+            if is_lever(x_cordinates, y_cordinates):
+                coin_counter = lever_functionality(coin_counter)
+
         if x_cordinates == 3 and y_cordinates == 1:
-            print('Victory!')
+            print('Victory! Total coins {}'.format(coin_counter))
+
             break
-        valid_direction = False
 
 main()
         
