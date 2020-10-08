@@ -55,34 +55,69 @@ def possible_direction(x,y):
         print("You can travel: (S)outh or (W)est.")
     return direction_str
 
-victory = False
-valid_direction = False
-x_cordinates = 1
-y_cordinates = 1
-
-
-while victory == False:
-    jonni = possible_direction(x_cordinates,y_cordinates)
-    
+def get_move(direction):
+    valid_direction = False
     while valid_direction == False:
         new_move = input("Direction: ")
         new_move = new_move.upper()
-        for letter in jonni:
+        for letter in direction:
             if letter == new_move:
                 valid_direction = True
                 break
         else:
             print('Not a valid direction!')
+            has_made_mistake = True
             possible_direction(x_cordinates, y_cordinates)
+    return new_move
                 
 
-    x_cordinates = move_player_x(x_cordinates, new_move)
-    y_cordinates = move_player_y(y_cordinates, new_move)
+def is_lever(x,y):
+    if x == 1 and y == 1: # (1,1)
+        return False
+    elif x == 1 and y == 2: # (1,2)
+        return True
+    elif x == 1 and y == 3: # (1,3)
+        return False
+    elif x == 2 and y == 1: # (2,1)
+        return False
+    elif x == 2 and y == 2: # (2,2)
+        return True
+    elif x == 2 and y == 3: # (2,3)
+        return True
+    elif x == 3 and y == 1: # (3,1)
+        return False
+    elif x == 3 and y == 2: # (3,2)
+        return True
+    elif x == 3 and y == 3: # (3,3)
+        return False
 
-    if x_cordinates == 3 and y_cordinates == 1:
-        print('Victory!')
-        break
-    valid_direction = False
+
+victory = False
+valid_direction = False
+x_cordinates = 1
+y_cordinates = 1
+
+has_made_mistake = False
+
+def main():
+    while victory == False:
+        jonni = possible_direction(x_cordinates,y_cordinates)
+        
+        new_move = get_move(jonni)
+                    
+
+        x_cordinates = move_player_x(x_cordinates, new_move)
+        y_cordinates = move_player_y(y_cordinates, new_move)
+
+        if x_cordinates == 3 and y_cordinates == 1:
+            print('Victory!')
+            break
+        valid_direction = False
+
+main()
+
+
+
 
 
 # 1.1 (N)orth
