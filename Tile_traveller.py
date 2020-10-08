@@ -99,21 +99,22 @@ y_cordinates = 1
 
 has_made_mistake = False
 
+def main():
+    while victory == False:
+        jonni = possible_direction(x_cordinates,y_cordinates)
+        
+        new_move = get_move(jonni)
+                    
 
-while victory == False:
-    jonni = possible_direction(x_cordinates,y_cordinates)
-    
-    new_move = get_move(jonni)
-                
+        x_cordinates = move_player_x(x_cordinates, new_move)
+        y_cordinates = move_player_y(y_cordinates, new_move)
 
-    x_cordinates = move_player_x(x_cordinates, new_move)
-    y_cordinates = move_player_y(y_cordinates, new_move)
+        if x_cordinates == 3 and y_cordinates == 1:
+            print('Victory!')
+            break
+        valid_direction = False
 
-    if x_cordinates == 3 and y_cordinates == 1:
-        print('Victory!')
-        break
-    valid_direction = False
-
+main()
         
 
 
